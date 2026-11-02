@@ -1,0 +1,49 @@
+{
+  "jit_domains": [
+    "openai.com",
+    "anthropic.com",
+    "blog.google",
+    "ai.google",
+    "deepmind.google",
+    "blogs.nvidia.com",
+    "techcrunch.com",
+    "venturebeat.com",
+    "wired.com",
+    "arstechnica.com",
+    "huggingface.co",
+    "theverge.com",
+    "therundown.ai",
+    "bensbites.co",
+    "news.mit.edu"
+  ],
+  "jic_domains": [
+    "arxiv.org",
+    "openai.com",
+    "anthropic.com",
+    "deepmind.google",
+    "research.google",
+    "ai.google",
+    "karpathy.github.io",
+    "hai.stanford.edu",
+    "ai.mit.edu",
+    "nist.gov",
+    "lmsys.org",
+    "huggingface.co",
+    "arstechnica.com"
+  ],
+  "gap_fill_queries": {
+    "jit": [
+      "AI product launch OR model release",
+      "artificial intelligence company announcement",
+      "machine learning breakthrough news"
+    ],
+    "jic": [
+      "AI architecture OR training technique research",
+      "machine learning evaluation OR alignment",
+      "foundational AI concept survey",
+      "LLM inference optimization OR fine-tuning research",
+      "AI safety alignment constitutional AI",
+      "retrieval augmented generation vector embeddings"
+    ]
+  }
+}

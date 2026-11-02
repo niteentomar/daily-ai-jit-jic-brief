@@ -1,0 +1,24 @@
+{
+  "tavily_success": [
+    {
+      "title": "Mock: New Multimodal Model Released",
+      "url": "https://example.com/mock-article-1",
+      "content": "Mock summary content for testing search result parsing.",
+      "published_date": "2026-06-15"
+    },
+    {
+      "title": "Mock: Open-Source LLM Benchmark Update",
+      "url": "https://example.com/mock-article-2",
+      "content": "Mock summary content for testing search result parsing.",
+      "published_date": "2026-06-14"
+    }
+  ],
+  "tavily_empty": [],
+  "duckduckgo_fallback": [
+    {
+      "title": "Mock: DuckDuckGo Fallback Result",
+      "href": "https://example.com/mock-ddg-1",
+      "body": "Mock DuckDuckGo result body for fallback testing."
+    }
+  ]
+}

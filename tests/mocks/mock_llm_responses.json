@@ -1,0 +1,34 @@
+{
+  "gemini_flash_success": {
+    "response": "Mock summary of AI news for testing purposes.",
+    "model_used": "gemini/gemini-2.5-flash",
+    "tokens_used": 120,
+    "cost": 0.0,
+    "timestamp": "2026-06-16T07:00:00Z"
+  },
+  "gemini_flash_failure": {
+    "error": "RateLimitError",
+    "model_used": "gemini/gemini-2.5-flash"
+  },
+  "gemini_flash_lite_success": {
+    "response": "Mock summary from Flash-Lite fallback for testing purposes.",
+    "model_used": "gemini/gemini-2.5-flash-lite",
+    "tokens_used": 100,
+    "cost": 0.0,
+    "timestamp": "2026-06-16T07:00:02Z"
+  },
+  "mistral_fallback_success": {
+    "response": "Mock fallback summary from Mistral.",
+    "model_used": "mistral/mistral-7b-instruct-v0.2",
+    "tokens_used": 95,
+    "cost": 0.0,
+    "timestamp": "2026-06-16T07:00:05Z"
+  },
+  "ollama_local_success": {
+    "response": "Mock local fallback summary from Ollama.",
+    "model_used": "ollama/llama3.2",
+    "tokens_used": 80,
+    "cost": 0.0,
+    "timestamp": "2026-06-16T07:00:08Z"
+  }
+}

@@ -1,0 +1,57 @@
+# ── Secrets (never commit) ─────────────────────────────
+.env
+*.env
+*_secrets.*
+*service-account*.json
+*credentials*.json
+
+# ── Python / tooling ───────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.venv*/
+.claude/
+
+# ── Runtime data (personal, regenerated) ───────────────
+database/*.db
+database/archive/
+config/archive/
+logs/
+token_usage.json
+scratch/
+
+# ── Archives, backups, old files ───────────────────────
+_backups/
+_to_delete/
+docs/history/
+docs/plans/
+docs/protocol/active/
+docs/protocol/archive/
+README_draft.md
+*_DRAFT.md
+*.tmp
+*.jsonl
+
+# ── Presentations and generated machine-specific files ──
+*.pptx
+*.pdf
+slide-*.jpg
+~$*
+.~lock*
+*.plist
+
+# ── One-off diagnostics ────────────────────────────────
+scripts/api_probe*.py
+scripts/api_probe_run.sh
+scripts/day1_verify.py
+
+# ── OS ─────────────────────────────────────────────────
+.DS_Store
+
+# v1 diagrams (superseded by README mermaid + deck v5)
+architecture_diagram.svg
+flow_diagram.svg

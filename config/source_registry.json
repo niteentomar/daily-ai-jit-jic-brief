@@ -1,0 +1,293 @@
+{
+ "_comment": "Single source of truth for authoritative sources (CL-062, decisions D3/D11). Edit here only; prompts and search filters read this file.",
+ "version": "1.0.0",
+ "tiers": {
+  "T1": {
+   "label": "Primary research",
+   "domains": [
+    "arxiv.org",
+    "openreview.net",
+    "aclanthology.org",
+    "proceedings.mlr.press",
+    "papers.nips.cc",
+    "huggingface.co/papers",
+    "research.google",
+    "deepmind.google",
+    "ai.meta.com",
+    "anthropic.com/research",
+    "openai.com/research",
+    "microsoft.com/en-us/research",
+    "research.nvidia.com",
+    "allenai.org",
+    "bair.berkeley.edu",
+    "hai.stanford.edu",
+    "csail.mit.edu"
+   ]
+  },
+  "T2": {
+   "label": "Expert explainers",
+   "domains": [
+    "karpathy.github.io",
+    "magazine.sebastianraschka.com",
+    "cameronrwolfe.substack.com",
+    "lilianweng.github.io",
+    "huyenchip.com",
+    "eugeneyan.com",
+    "interconnects.ai",
+    "simonwillison.net",
+    "hamel.dev",
+    "jalammar.github.io",
+    "deeplearning.ai",
+    "huggingface.co/blog",
+    "blog.langchain.com",
+    "epoch.ai"
+   ]
+  },
+  "T3": {
+   "label": "Governance, safety, security",
+   "domains": [
+    "nist.gov",
+    "oecd.ai",
+    "artificialintelligenceact.eu",
+    "aisi.gov.uk",
+    "atlas.mitre.org",
+    "genai.owasp.org",
+    "partnershiponai.org",
+    "aiindex.stanford.edu"
+   ]
+  },
+  "T4": {
+   "label": "Syllabus references",
+   "domains": [
+    "incompleteideas.net",
+    "spinningup.openai.com",
+    "statlearning.com",
+    "d2l.ai",
+    "cs231n.stanford.edu",
+    "web.stanford.edu",
+    "exp-platform.com"
+   ]
+  },
+  "T5": {
+   "label": "Reputable media",
+   "domains": [
+    "towardsdatascience.com",
+    "technologyreview.com",
+    "arstechnica.com",
+    "venturebeat.com"
+   ]
+  },
+  "J1": {
+   "label": "Primary announcements",
+   "domains": [
+    "openai.com",
+    "anthropic.com",
+    "blog.google",
+    "deepmind.google",
+    "ai.meta.com",
+    "blogs.microsoft.com",
+    "nvidianews.nvidia.com",
+    "mistral.ai",
+    "huggingface.co",
+    "aws.amazon.com",
+    "x.ai",
+    "qwenlm.github.io",
+    "github.blog"
+   ]
+  },
+  "J2": {
+   "label": "Expert curators",
+   "domains": [
+    "deeplearning.ai",
+    "simonwillison.net",
+    "interconnects.ai",
+    "jack-clark.net",
+    "latent.space",
+    "lmarena.ai"
+   ]
+  },
+  "J3": {
+   "label": "Reputable media",
+   "domains": [
+    "reuters.com",
+    "techcrunch.com",
+    "theverge.com",
+    "venturebeat.com",
+    "arstechnica.com",
+    "technologyreview.com",
+    "wired.com",
+    "axios.com"
+   ]
+  },
+  "J4": {
+   "label": "Policy",
+   "domains": [
+    "digital-strategy.ec.europa.eu",
+    "artificialintelligenceact.eu",
+    "nist.gov",
+    "whitehouse.gov",
+    "gov.uk"
+   ]
+  }
+ },
+ "blocked": [
+  "medium.com",
+  "towardsai.net",
+  "youtube.com",
+  "prnewswire.com",
+  "globenewswire.com",
+  "businesswire.com",
+  "linkedin.com",
+  "reddit.com",
+  "quora.com"
+ ],
+ "sections": {
+  "jit": {
+   "window_days": 7,
+   "search_tiers": [
+    "J1",
+    "J2",
+    "J3",
+    "J4"
+   ],
+   "primary_tiers": [
+    "J1"
+   ],
+   "categories": [
+    "model release",
+    "product launch",
+    "research result",
+    "open-source release",
+    "funding/M&A",
+    "policy/regulation",
+    "compute/infrastructure",
+    "safety/security incident"
+   ],
+   "min_items": 5,
+   "max_items": 10,
+   "min_categories": 4,
+   "max_per_category": 3,
+   "query_plan": [
+    "new AI model release announced this week",
+    "AI product launch announcement",
+    "open-source AI model release",
+    "AI policy regulation news this week",
+    "AI chips compute infrastructure announcement",
+    "AI safety security incident"
+   ],
+   "first_party_queries": [
+    "announces new AI model release",
+    "introducing new AI product launch",
+    "AI research announcement"
+   ]
+  },
+  "jic": {
+   "window_days": 14,
+   "search_tiers": [
+    "T1",
+    "T2",
+    "T3",
+    "T5"
+   ],
+   "media_tiers": [
+    "T5"
+   ],
+   "max_media_items": 2,
+   "buckets": [
+    "architecture",
+    "training & alignment",
+    "inference & systems",
+    "retrieval & memory",
+    "agents & tools",
+    "evaluation",
+    "safety & security",
+    "governance & policy",
+    "data"
+   ],
+   "min_items": 5,
+   "max_items": 10,
+   "min_buckets": 4,
+   "max_per_bucket": 2,
+   "query_plan": [
+    "new research LLM architecture attention",
+    "alignment RLHF DPO preference optimization research",
+    "LLM inference efficiency KV cache quantization research",
+    "retrieval augmented generation agent memory research",
+    "LLM agents tool use evaluation benchmark research",
+    "AI safety interpretability red teaming research",
+    "AI governance framework standard guidance"
+   ]
+  },
+  "lesson": {
+   "grounding": {
+    "papers": {
+     "tiers": [
+      "T1"
+     ],
+     "window_days": null,
+     "query": "{short} seminal paper and recent research",
+     "n": 8
+    },
+    "explainers": {
+     "tiers": [
+      "T2",
+      "T4"
+     ],
+     "window_days": null,
+     "query": "{short} explained",
+     "n": 6
+    },
+    "industry": {
+     "tiers": [
+      "T2",
+      "T3",
+      "T5",
+      "J1",
+      "J3"
+     ],
+     "window_days": 365,
+     "query": "{short} used in production by companies",
+     "n": 6
+    },
+    "future": {
+     "tiers": [
+      "T1",
+      "T2"
+     ],
+     "window_days": 365,
+     "query": "{short} future directions open problems",
+     "n": 6
+    }
+   },
+   "max_papers": 5,
+   "paper_filter": {
+    "_comment": "CL-073 (owner 2026-11-02): papers must be filed under Computer Science (arXiv cs.* or stat.ML; else OpenAlex field). LLM-proposed classics outside CS pass only with grade 3.",
+    "gate_prefixes": [
+     "cs.",
+     "stat.ML"
+    ],
+    "openalex_fields": [
+     "Computer Science"
+    ],
+    "search_categories": [
+     "cs.AI",
+     "cs.LG",
+     "cs.CL",
+     "cs.CV",
+     "cs.IR",
+     "cs.MA",
+     "cs.NE",
+     "cs.RO",
+     "cs.HC",
+     "cs.CY",
+     "stat.ML"
+    ],
+    "min_grade": 2,
+    "seminal_grade": 3,
+    "arxiv_max_results": 10,
+    "max_queries": 4,
+    "max_graded": 30
+   }
+  }
+ }
+}

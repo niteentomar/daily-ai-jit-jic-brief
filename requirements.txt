@@ -1,0 +1,21 @@
+# CL-061 (2026-11-01): pins verified installable together on Python 3.13/3.14.
+# litellm >= 1.80.8 is required for Gemini 3/4 on the Vertex global endpoint (API audit).
+python-dotenv==1.0.1
+litellm==1.106.6
+langchain==0.3.30
+langchain-core==0.3.86
+langchain-community==0.3.31
+langchain-litellm==0.3.5
+langsmith==0.14.16
+mcp==2.3.0
+tavily-python==0.8.5
+ddgs==9.16.1
+requests>=2.32
+jinja2==3.1.6
+streamlit==1.40.0
+tenacity==9.0.0
+sendgrid==6.12.5
+google-auth==2.62.0
+pytest==8.3.3
+pytest-mock==3.14.0
+responses==0.25.3

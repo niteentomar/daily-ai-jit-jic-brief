@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Daily AI Learning Brief</title>
+</head>
+<!-- CL-065 template v2: TL;DR, 3A fixed slots, 3C verified papers with citation stars,
+     3D uses + PM guide, 3E one line, 3H what next, 3I glossary; 3B/3F/3G removed (D6, D8). -->
+<body style="margin:0;padding:0;background-color:#f0f0f0;font-family:Arial,Helvetica,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f0f0;">
+<tr><td align="center" style="padding:20px 10px;">
+<table width="700" cellpadding="0" cellspacing="0" style="max-width:700px;background-color:#ffffff;">
+
+  <!-- HEADER -->
+  <tr><td style="background-color:#1a1a2e;padding:24px 28px;">
+    <p style="margin:0 0 4px 0;color:#e94560;font-size:13px;letter-spacing:1px;text-transform:uppercase;">{{ run_date }}</p>
+    <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Your Daily AI Learning Brief</h1>
+  </td></tr>
+
+  <!-- AT A GLANCE -->
+  <tr><td style="background-color:#fff8f0;border-left:4px solid #e94560;padding:18px 28px;">
+    <p style="margin:0 0 8px 0;color:#1a1a2e;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;">Today at a Glance</p>
+    <ul style="margin:0;padding-left:18px;color:#333333;font-size:14px;line-height:1.7;">
+      <li><strong>JIT:</strong> {{ critical_jit }}</li>
+      <li><strong>JIC:</strong> {{ critical_jic }}</li>
+      <li><strong>Lesson:</strong> {{ lesson.topic_name }}</li>
+    </ul>
+  </td></tr>
+
+  <!-- JIT -->
+  <tr><td style="padding:24px 28px 0 28px;">
+    <h2 style="margin:0 0 12px 0;color:#1a1a2e;font-size:18px;border-bottom:2px solid #e94560;padding-bottom:6px;">Just-In-Time: What's Happening Now</h2>
+    {% if jit_quiet %}<p style="margin:0 0 10px 0;color:#8a6d3b;font-size:12px;background:#fcf8e3;padding:6px 10px;">Quiet news day: {{ jit_items|length }} new {{ 'story' if jit_items|length == 1 else 'stories' }} passed the checks. Repeats are never used to fill space.</p>{% endif %}
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13px;">
+      {% for item in jit_items %}
+      <tr style="background-color:{% if loop.index is odd %}#ffffff{% else %}#f7f7f9{% endif %};">
+        <td style="padding:8px;vertical-align:top;color:#666666;width:22px;">{{ loop.index }}</td>
+        <td style="padding:8px;vertical-align:top;">
+          <a href="{{ item.url }}" style="color:#1a1a2e;font-weight:700;text-decoration:none;">{{ item.headline }}</a>
+          <span style="color:#ffffff;background:#e94560;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:4px;">{{ item.category }}</span><br>
+          <span style="color:#333333;">{{ item.what_happened }}</span><br>
+          <span style="color:#555555;"><strong>Why it matters:</strong> {{ item.why_it_matters_pm }}</span><br>
+          <span style="color:#888888;font-size:11px;">{{ item.source }} &middot; {{ item.date }}{% if item.also_covered_by_urls %} &middot; also covered by {{ item.also_covered_by_urls|length }} other source{{ 's' if item.also_covered_by_urls|length > 1 }}{% endif %}{% if item.update_of %} &middot; <strong>Update</strong> to an earlier story{% endif %}{% if item.related %} &middot; related: {% for r in item.related %}<a href="{{ r.url }}" style="color:#888888;">{{ r.title }}</a>{% if not loop.last %}; {% endif %}{% endfor %}{% endif %}</span>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td style="padding:8px;color:#666666;">No new stories passed today's checks.</td></tr>
+      {% endfor %}
+    </table>
+  </td></tr>
+
+  <!-- JIC -->
+  <tr><td style="padding:24px 28px 0 28px;">
+    <h2 style="margin:0 0 12px 0;color:#1a1a2e;font-size:18px;border-bottom:2px solid #e94560;padding-bottom:6px;">Just-In-Case: Foundational Concepts in the News</h2>
+    {% if jic_quiet %}<p style="margin:0 0 10px 0;color:#8a6d3b;font-size:12px;background:#fcf8e3;padding:6px 10px;">Quiet period: {{ jic_items|length }} new {{ 'concept' if jic_items|length == 1 else 'concepts' }} in the last 14 days passed the checks.</p>{% endif %}
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13px;">
+      {% for item in jic_items %}
+      <tr style="background-color:{% if loop.index is odd %}#ffffff{% else %}#f7f7f9{% endif %};">
+        <td style="padding:8px;vertical-align:top;color:#666666;width:22px;">{{ loop.index }}</td>
+        <td style="padding:8px;vertical-align:top;">
+          <a href="{{ item.url }}" style="color:#1a1a2e;font-weight:700;text-decoration:none;">{{ item.concept }}</a>
+          <span style="color:#1a1a2e;background:#dfe6f3;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:4px;">{{ item.bucket }}</span><br>
+          <span style="color:#333333;">{{ item.core_insight }}</span><br>
+          <span style="color:#888888;font-size:11px;">{{ item.source }} &middot; {{ item.date }}{% if item.also_covered_by_urls %} &middot; also covered by {{ item.also_covered_by_urls|length }} other source{{ 's' if item.also_covered_by_urls|length > 1 }}{% endif %}{% if item.related %} &middot; related: {% for r in item.related %}<a href="{{ r.url }}" style="color:#888888;">{{ r.title }}</a>{% if not loop.last %}; {% endif %}{% endfor %}{% endif %}</span>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td style="padding:8px;color:#666666;">No new concepts passed today's checks.</td></tr>
+      {% endfor %}
+    </table>
+  </td></tr>
+
+  <!-- LESSON -->
+  <tr><td style="padding:24px 28px 0 28px;">
+    <h2 style="margin:0 0 8px 0;color:#1a1a2e;font-size:18px;border-bottom:2px solid #e94560;padding-bottom:6px;">Today's Lesson: {{ lesson.topic_name }}</h2>
+  </td></tr>
+  {% if not lesson_ok %}
+  <tr><td style="padding:12px 28px 0 28px;color:#a94442;font-size:13px;">The lesson could not be generated today. It will be retried in tomorrow's run.</td></tr>
+  {% else %}
+  {% if lesson.quality_note %}<tr><td style="padding:8px 28px 0 28px;"><p style="margin:0;color:#8a6d3b;font-size:11px;background:#fcf8e3;padding:6px 10px;">{{ lesson.quality_note }}</p></td></tr>{% endif %}
+
+  <!-- TL;DR -->
+  <tr><td style="padding:14px 28px 0 28px;">
+    <div style="background:#1a1a2e;color:#ffffff;padding:14px 16px;border-radius:4px;font-size:13px;line-height:1.6;">
+      <strong style="color:#e94560;">TL;DR</strong><br>
+      {{ lesson.tldr_what }} {{ lesson.tldr_why_now }}<br><strong>PM takeaway:</strong> {{ lesson.tldr_pm_takeaway }}
+    </div>
+  </td></tr>
+
+  <!-- 3A -->
+  <tr><td style="padding:16px 28px 0 28px;font-size:13px;color:#333333;line-height:1.6;">
+    <h3 style="margin:0 0 8px 0;color:#e94560;font-size:15px;">3A. What It Is</h3>
+    <p style="margin:0 0 6px 0;"><strong>Definition:</strong> {{ lesson.definition }}</p>
+    <p style="margin:0 0 6px 0;"><strong>Problem it solves:</strong> {{ lesson.problem_solved }}</p>
+    <p style="margin:0 0 2px 0;"><strong>Components</strong></p>
+    <ul style="margin:0 0 6px 0;padding-left:18px;">{% for c in lesson.components %}<li><strong>{{ c.name }}</strong>: {{ c.role }}</li>{% endfor %}</ul>
+    <p style="margin:0 0 2px 0;"><strong>How it works</strong></p>
+    <ol style="margin:0 0 6px 0;padding-left:20px;">{% for s in lesson.how_it_works %}<li>{{ s }}</li>{% endfor %}</ol>
+    {% if lesson.key_equation and lesson.key_equation.expression and lesson.key_equation.expression|lower != 'none' %}
+    <p style="margin:0 0 6px 0;"><strong>Key equation:</strong> <code style="background:#f4f4f4;padding:1px 4px;">{{ lesson.key_equation.expression }}</code><br><em>In plain English:</em> {{ lesson.key_equation.plain_english }}</p>
+    {% endif %}
+    <p style="margin:0 0 2px 0;"><strong>Examples</strong></p>
+    <ul style="margin:0 0 6px 0;padding-left:18px;">{% for e in lesson.examples %}<li>{{ e }}</li>{% endfor %}</ul>
+    <p style="margin:0 0 2px 0;"><strong>Limitations</strong></p>
+    <ul style="margin:0;padding-left:18px;">{% for l in lesson.limitations %}<li>{{ l }}</li>{% endfor %}</ul>
+  </td></tr>
+
+  <!-- 3C -->
+  <tr><td style="padding:16px 28px 0 28px;">
+    <h3 style="margin:0 0 8px 0;color:#e94560;font-size:15px;">3C. Key Papers</h3>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:12px;">
+      <tr style="background:#1a1a2e;color:#ffffff;"><th style="padding:6px;text-align:left;">Paper</th><th style="padding:6px;text-align:left;width:46px;">Year</th><th style="padding:6px;text-align:left;width:90px;">Citations</th><th style="padding:6px;text-align:left;">Contribution</th></tr>
+      {% for p in lesson.papers %}
+      <tr style="background-color:{% if loop.index is odd %}#ffffff{% else %}#f7f7f9{% endif %};">
+        <td style="padding:6px;"><a href="{{ p.url }}" style="color:#1a1a2e;text-decoration:none;font-weight:600;">{{ p.title }}</a>{% if p.is_seminal %} <span style="background:#e94560;color:#fff;font-size:10px;padding:0 5px;border-radius:6px;">Seminal</span>{% endif %}<br><span style="color:#888;">{{ p.first_author }}</span></td>
+        <td style="padding:6px;color:#555;">{{ p.year }}</td>
+        <td style="padding:6px;color:#b8860b;">{{ p.stars }} {% if p.citations is not none %}<span style="color:#888;">({{ "{:,}".format(p.citations) }})</span>{% endif %}{% if p.badge %} <span style="background:#1a1a2e;color:#fff;font-size:10px;padding:0 5px;border-radius:6px;">{{ p.badge }}</span>{% endif %}</td>
+        <td style="padding:6px;color:#444;">{{ p.contribution }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4" style="padding:6px;color:#666;">No papers could be verified today.</td></tr>
+      {% endfor %}
+    </table>
+  </td></tr>
+
+  <!-- 3D -->
+  <tr><td style="padding:16px 28px 0 28px;font-size:13px;color:#333333;line-height:1.6;">
+    <h3 style="margin:0 0 8px 0;color:#e94560;font-size:15px;">3D. Where It Applies</h3>
+    <ul style="margin:0 0 6px 0;padding-left:18px;">{% for u in lesson.uses %}<li><strong>{{ u.company_or_product }}</strong>: {{ u.use }}</li>{% endfor %}</ul>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:12px;">
+      <tr><td style="padding:5px;background:#eef7ee;width:33%;"><strong>Use when</strong><br>{{ lesson.pm_guide.use_when }}</td>
+          <td style="padding:5px;background:#fbeeee;width:33%;"><strong>Avoid when</strong><br>{{ lesson.pm_guide.avoid_when }}</td>
+          <td style="padding:5px;background:#eef2fb;"><strong>Cheaper alternative</strong><br>{{ lesson.pm_guide.cheaper_alternative }}</td></tr>
+    </table>
+  </td></tr>
+
+  <!-- 3E -->
+  <tr><td style="padding:16px 28px 0 28px;font-size:13px;color:#333333;">
+    <h3 style="margin:0 0 6px 0;color:#e94560;font-size:15px;">3E. Maturity</h3>
+    <p style="margin:0;"><span style="background:#1a1a2e;color:#fff;padding:1px 8px;border-radius:8px;font-size:11px;">{{ lesson.maturity_stage }}</span> {{ lesson.maturity_evidence }}</p>
+  </td></tr>
+
+  <!-- 3H -->
+  <tr><td style="padding:16px 28px 0 28px;font-size:13px;color:#333333;line-height:1.6;">
+    <h3 style="margin:0 0 8px 0;color:#e94560;font-size:15px;">3H. What Next</h3>
+    <ul style="margin:0;padding-left:18px;">{% for n in lesson.what_next %}<li><strong>{{ n.direction }}</strong>: {{ n.expectation }}{% if n.source_url %} <a href="{{ n.source_url }}" style="color:#e94560;font-size:11px;">({{ n.source_label }})</a>{% endif %}</li>{% endfor %}</ul>
+  </td></tr>
+
+  <!-- 3I -->
+  <tr><td style="padding:16px 28px 0 28px;">
+    <h3 style="margin:0 0 8px 0;color:#e94560;font-size:15px;">3I. Glossary</h3>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:12px;">
+      {% for g in lesson.glossary %}
+      <tr style="background-color:{% if loop.index is odd %}#ffffff{% else %}#f7f7f9{% endif %};"><td style="padding:5px;width:30%;font-weight:600;color:#1a1a2e;vertical-align:top;">{{ g.term }}</td><td style="padding:5px;color:#444;">{{ g.definition }}</td></tr>
+      {% endfor %}
+    </table>
+  </td></tr>
+  {% endif %}
+
+  <!-- FOOTER / SYSTEM STATUS -->
+  <tr><td style="padding:20px 28px;margin-top:16px;">
+    <p style="margin:16px 0 0 0;border-top:1px solid #eeeeee;padding-top:10px;color:#999999;font-size:11px;line-height:1.5;">
+      System status: {{ status_line }}<br>
+      Generated {{ run_timestamp }} &middot; run {{ run_id }}
+    </p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>
